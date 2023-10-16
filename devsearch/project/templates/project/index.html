@@ -11,9 +11,7 @@
     {% for project in projects %}
     <div class="col-md-3 mb-3 mt-3">
       <div class="card">
-        <div class="card-header text-light bg-dark">
-          <span>{{ project.title }}</span>
-        </div>
+          <img width=100% src={{ project.featured_image.url }}> 
         <div class="card-body">
           <small>{{ project.description }}</small><br>
           <small style="color:gray;font-size: 12px">Votes: {{ project.vote_total }}</small><br>
