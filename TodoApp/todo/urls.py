@@ -9,4 +9,5 @@ urlpatterns = [
     path("create/<str:weekday>/", views.daycreate, name="daycreate"),
     path("show/<str:weekday>/", views.show, name="show"),
     path("update/<str:todo_id>/", views.update, name="update"),
+    path("destroy/<str:todo_id>/", views.destroy, name="destroy"),
 ]

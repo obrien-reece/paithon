@@ -4,6 +4,15 @@
 
 <div class="container">
   <div class="col-md-10 m-auto mt-3">
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-warning">
+      {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+
     <div class="row">
 
       {% for day in days %}
@@ -29,4 +38,4 @@
   </div>
 </div>
 
-  {% endblock %}
+{% endblock %}

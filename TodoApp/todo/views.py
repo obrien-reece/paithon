@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from .forms import todoForm
 from .models import Day, Todo
 
@@ -55,3 +56,10 @@ def update(request, todo_id):
     form = todoForm(instance=todo_item, initial=initial_data)
     context = {"form": form}
     return render(request, "todo/create_update.html", context)
+
+
+def destroy(request, todo_id):
+    todo = Todo.objects.get(pk=todo_id)
+    todo.delete()
+    messages.success(request, "Todo Item has been deleted sucessfully")
+    return redirect("todo:index")
