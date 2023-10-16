@@ -1,0 +1,27 @@
+{% extends "main.html" %}
+
+{% block title %} Project Index Page {% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 m-auto mb-3 mt-1">
+      <span>Do you want to delete the <code>{{ project.title }}</code> project</span>
+      <br><br>
+        <div>
+          <span>
+            <a href="{% url "project:index" %}" style="text-decoration: none;">Go back</a>
+          </span>
+        <span>
+          <form action="" method="POST">
+            {% csrf_token %}
+            <button class="btn btn-success btn-small" type="submit">Confirm Delete</button>
+          </form>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

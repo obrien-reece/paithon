@@ -1,0 +1,40 @@
+{% extends "main.html" %}
+{% load static %}
+
+{% block title %} Project Index Page {% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+
+    {% for project in projects %}
+    <div class="col-md-3 mb-3 mt-3">
+      <div class="card">
+        <div class="card-header text-light bg-dark">
+          <span>{{ project.title }}</span>
+        </div>
+        <div class="card-body">
+          <small>{{ project.description }}</small><br>
+          <small style="color:gray;font-size: 12px">Votes: {{ project.vote_total }}</small><br>
+          <small style="color:gray;font-size: 12px">Positive votes: {{ project.vote_ratio }}%</small><br>
+        </div>
+        <div class="card-footer">
+          <a style="float: right" href="{% url 'project:delete' project.title %}">
+            <img width=50% src="{% static 'project/images/delete.png' %}">
+          </a>
+          <a style="float: right" href="{% url 'project:show' project.title %}">
+            <img width=50% src="{% static 'project/images/view.png' %}">
+          </a>
+          <a style="float: right" href="{% url 'project:update' project.title %}">
+            <img width=50% src="{% static 'project/images/edit.png' %}">
+          </a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+</div>
+
+  {% endblock %}

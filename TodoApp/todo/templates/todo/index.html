@@ -1,0 +1,32 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+<div class="container">
+  <div class="col-md-10 m-auto mt-3">
+    <div class="row">
+
+      {% for day in days %}
+      <div class="col-md-4">
+        <span><strong>
+          <a href="{% url "todo:show" day %}" style="text-decoration:none;color: black">
+            {{ day|title }}
+          </a>
+        </strong></span>
+        <ul class="ul-item" style="margin-left: 18px">
+
+          {% for todo in day.todo.all %}
+          <small><li class="li-item">{{ todo.todo }} at 
+            <span class="badge bg-success">{{ todo.created }}</span>
+          </li></small>
+          {% endfor %}
+
+        </ul>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</div>
+
+  {% endblock %}

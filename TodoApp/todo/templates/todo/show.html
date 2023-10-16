@@ -1,0 +1,39 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 m-auto mt-3">
+      <div>
+        <span><strong>{{ day|title }}</strong></span>
+        <span class="float-end" data-toggle="tooltip" data-placement="top" title="Add Todo Item"> 
+          <a href="{% url "todo:daycreate" day %}"><i style="color: black" class="fa-solid fa-plus"></i></a>
+        </span>
+      </div>
+      <ol style="font-size: 15px;">
+
+        {% for todo in day.todo.all %}
+        <li>
+          <small>{{ todo.todo }} at 
+            <span class="badge bg-success">{{ todo.created }}</span>
+          </small>
+          <a href="{% url "todo:update" todo.id %}" style="text-decoration: none">
+            <i class="fa-solid fa-pen-to-square" style="color: green;font-size: 12px"></i>
+          </a>
+
+        </li>
+        {% endfor %}
+
+      </ol>
+    </div>
+  </div>
+</div>
+
+<script>
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+
+{% endblock %}
