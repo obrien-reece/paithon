@@ -22,6 +22,7 @@ ALLOWED_HOSTS = ["127.0.0.1"]
 INSTALLED_APPS = [
     'polls.apps.PollsConfig',
     'project.apps.ProjectConfig',
+    'users.apps.UsersConfig',
 
     'django.contrib.admin',
     'django.contrib.auth',
