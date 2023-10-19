@@ -11,11 +11,14 @@
         </li>
       </ul>
       {% if request.user.is_authenticated %}
-      {{ request.user.username|title }}
-      {% else %}
       <form method="POST" action="{% url "users:logout" %}">
         {% csrf_token %}
         <button class="btn btn-outline-danger" type="submit">Logout</button>
+      </form>
+      {% else %}
+      <form method="POST" action="{% url "users:login" %}">
+        {% csrf_token %}
+        <button class="btn btn-outline-danger" type="submit">Login</button>
       </form>
       {% endif %}
     </div>

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
+from django.contrib import messages
 
 
 def profiles(request):
@@ -18,7 +19,8 @@ def loginUser(request):
             login(request, user)
             return redirect("users:profiles")
         else:
-            print('The details provided are incorrect')
+            messages.error(request, 'The details provided are incorrect')
+            return redirect("users:login")
 
     return render(request, "users/login.html")
 
